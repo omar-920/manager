@@ -8,10 +8,16 @@
         @vite('resources/js/app.js')
         <title>{{ $title ?? 'Page Title' }}</title>
         @fluxAppearance()
+        @livewireStyles
     </head>
     <body  class="min-h-screen bg-white dark:bg-zinc-800">
-        @include('livewire.sidebar-comp')
+
+        @if (!request()->routeIs('register'))
+            @include('livewire.sidebar-comp')
+        @endif
         {{ $slot }}
     @fluxScripts
+    
+    @livewireScripts
     </body>
 </html>
